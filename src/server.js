@@ -2,6 +2,8 @@ import express from "express";
 import bodyParser from "body-parser"; //tv ho tro lay tham so client
 import viewEngine from "./config/viewEngine";
 import initWebRoutes from "./router/web";
+import connectDB from "./config/connectDB";
+
 require("dotenv").config(); //tv giup run process.env
 
 let app = express();
@@ -12,6 +14,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 viewEngine(app);
 initWebRoutes(app);
+
+connectDB();
 
 let port = process.env.PORT || 6969;
 //port === undefined => port = 6969
