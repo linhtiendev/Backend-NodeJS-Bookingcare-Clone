@@ -24,9 +24,22 @@ let postCRUD = async (req, res) => {
     console.log(message);
     return res.send("post crud form server");
 };
+
+// dung Promise de xu ly bat dong bo nen ham nay phai them async/await
+let displayGetCRUD = async (req, res) => {
+    let data = await CRUDService.getAllUser();
+    console.log("-----------------------");
+    console.log(data);
+    console.log("-----------------------");
+
+    return res.render("displayCRUD.ejs", {
+        dataTable: data,
+    });
+};
 module.exports = {
     getHomePage: getHomePage,
     getAboutPage: getAboutPage,
     getCRUD: getCRUD,
     postCRUD: postCRUD,
+    displayGetCRUD: displayGetCRUD,
 };

@@ -35,6 +35,26 @@ let hashUserPassword = (password) => {
     });
 };
 
+// function lay tat ca nguoi dung, kh can input dau vao
+// dung Promise de xy ly bat dong bo
+// resolve: chap nhan (tuong duong return), reject: tu choi
+// dung async/await de bao js day la ham bat dong bo
+// dung try/catch tranh loi khi dang xu ly
+
+let getAllUser = () => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let users = db.User.findAll({
+                raw: true,
+            });
+            resolve(users);
+        } catch (e) {
+            reject(e);
+        }
+    });
+};
+
 module.exports = {
     createNewUser: createNewUser,
+    getAllUser: getAllUser,
 };
