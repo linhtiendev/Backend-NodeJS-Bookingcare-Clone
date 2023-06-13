@@ -28,10 +28,6 @@ let postCRUD = async (req, res) => {
 // dung Promise de xu ly bat dong bo nen ham nay phai them async/await
 let displayGetCRUD = async (req, res) => {
     let data = await CRUDService.getAllUser();
-    console.log("-----------------------");
-    console.log(data);
-    console.log("-----------------------");
-
     return res.render("displayCRUD.ejs", {
         dataTable: data,
     });
@@ -60,6 +56,16 @@ let putCRUD = async (req, res) => {
     });
 };
 
+let deleteCRUD = async (req, res) => {
+    let id = req.query.id;
+    if (id) {
+        await CRUDService.deleteUserById(id);
+        return res.send("User deleted successfully");
+    } else {
+        return res.send("User not found");
+    }
+};
+
 module.exports = {
     getHomePage: getHomePage,
     getAboutPage: getAboutPage,
@@ -68,4 +74,5 @@ module.exports = {
     displayGetCRUD: displayGetCRUD,
     getEditCRUD: getEditCRUD,
     putCRUD: putCRUD,
+    deleteCRUD: deleteCRUD,
 };
