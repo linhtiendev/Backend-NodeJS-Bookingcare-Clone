@@ -27,7 +27,7 @@ let createNewUser = async (data) => {
 let hashUserPassword = (password) => {
     return new Promise(async (resolve, reject) => {
         try {
-            let hashPassword = await bcrypt.hashSync("password", salt);
+            let hashPassword = await bcrypt.hashSync(password, salt);
             resolve(hashPassword);
         } catch (e) {
             reject(e);
@@ -44,7 +44,7 @@ let hashUserPassword = (password) => {
 let getAllUser = () => {
     return new Promise(async (resolve, reject) => {
         try {
-            let users = db.User.findAll({
+            let users = await db.User.findAll({
                 raw: true,
             });
             resolve(users);
