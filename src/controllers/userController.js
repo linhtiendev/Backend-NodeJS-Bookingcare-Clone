@@ -14,7 +14,6 @@ let handleLogin = async (req, res) => {
     }
 
     let userData = await userService.handleUserLogin(email, password);
-    console.log(userData);
     // check email exits, bắt lỗi email người dùng có trong hệ thống hay không
     // compare password, bắt lỗi người dùng nhập vào k hợp lệ khi biết chắn chắc người dùng đó có trong hệ thống hay k
     // return userInfor
