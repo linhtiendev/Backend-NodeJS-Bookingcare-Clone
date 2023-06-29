@@ -24,7 +24,13 @@ let handleUserLogin = (email, password) => {
                 // user already exits
                 // Dùng sqelize để tìm 1 user
                 let user = await db.User.findOne({
-                    attributes: ["email", "roleId", "password"],
+                    attributes: [
+                        "email",
+                        "roleId",
+                        "password",
+                        "firstName",
+                        "lastName",
+                    ],
                     where: { email: email },
                     raw: true,
                 });
